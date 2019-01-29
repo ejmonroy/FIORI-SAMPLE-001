@@ -11,7 +11,7 @@
 		},
 		"dataSources": {
 			"mainService": {
-				"uri": "/here/goes/your/serviceurl/",
+				"uri": "/sap/opu/odata/sap/ZBFOM_RET_ALLOCATION_SRV/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
