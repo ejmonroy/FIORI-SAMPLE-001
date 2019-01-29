@@ -39,7 +39,16 @@
         "version": "1.52.26"
       },
       "description": "SAPUI5 Test Resources"
-    }
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "F5D",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "F5D"
+    }    
   ],
   "welcomeFile": "/webapp/test/flpSandbox.html",
   "sendWelcomeFileRedirect": true
