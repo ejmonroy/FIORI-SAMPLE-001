@@ -103,10 +103,7 @@ sap.ui.define([
 			_onObjectMatched : function (oEvent) {
 				var sObjectId =  oEvent.getParameter("arguments").objectId;
 				this.getModel().metadataLoaded().then( function() {
-					var sObjectPath = this.getModel().createKey("AllocationHeaderSet", {
-						OrderNumber :  sObjectId
-					});
-					this._bindView("/" + sObjectPath);
+					this._bindView("/" + sObjectId);
 				}.bind(this));
 			},
 
