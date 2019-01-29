@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZBFOM_RET_ALLOCATION_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="AllocationHeader" sap:content-version="1">
+				<Key><PropertyRef Name="StoreCode"/><PropertyRef Name="OrderNumber"/></Key><Property Name="StoreCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Site" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Alloc. Table" sap:creatable="false"
+					sap:updatable="false"/><Property Name="OrderDesc" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="TotalRsp" Type="Edm.Decimal" Precision="12" Scale="3" sap:unit="Currency" sap:label="Amount" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TotalQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Quantity" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ArticleCount" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Counter" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Processed" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="PassCutOff" Type="Edm.Boolean" Nullable="false" sap:label="Boolean Variable (X=True, Space=False)" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="OrderType" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Alloc. tbl type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="MerchCategory" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Merchandise Category" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/><Property Name="TopSelling" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="PromoCurrWeek" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="PromoNextWeek" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="PromoFollWeek" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Vendor" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="ReviewDate" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Review Date" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="SourceSupply" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Supply source" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Top1000" Type="Edm.Boolean" Nullable="false" sap:label="Top 1000" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Top500" Type="Edm.Boolean" Nullable="false" sap:label="Top 500" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Top250" Type="Edm.Boolean" Nullable="false" sap:label="Top 250" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><NavigationProperty Name="HeaderToItem" Relationship="ZBFOM_RET_ALLOCATION_SRV.HeaderItem" FromRole="FromRole_HeaderItem"
+					ToRole="ToRole_HeaderItem"/></EntityType>
+			<EntityType Name="AllocationItem" sap:content-version="1">
+				<Key><PropertyRef Name="StoreCode"/><PropertyRef Name="OrderNumber"/><PropertyRef Name="OrderItem"/></Key><Property Name="BaseUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unit of Measure" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="ReviewDate" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="char8" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Blocked" Type="Edm.Boolean" Nullable="false" sap:label="Boolean Variable (X=True, Space=False)" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PassCutOff" Type="Edm.Boolean" Nullable="false" sap:label="Boolean Variable (X=True, Space=False)" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PlannedQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="PlannedUom" sap:label="Plan Qty"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Tolerance" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Tolerance Indicator" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="OrderUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="PlannedUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="StoreCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Site" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Alloc. Table" sap:creatable="false"
+					sap:updatable="false" sap:filterable="false"/><Property Name="Processed" Type="Edm.Boolean" Nullable="false" sap:label="Boolean Variable (X=True, Space=False)" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="OrderItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:filterable="false"/><Property Name="WeightedItem" Type="Edm.Boolean" Nullable="false" sap:label="Boolean Variable (X=True, Space=False)" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleNumber" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Article" sap:creatable="false"
+					sap:updatable="false"/><Property Name="ArticleRsp" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ArticleText" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="TotalRsp" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ModifyQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="ModifyUom" sap:label="Requested qty"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ModifyUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unit of Measure" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="CurrentQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="CurrentUom" sap:label="Unrestricted"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CurrentUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="ExpectedQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="ExpectedUom" sap:label="Unrestricted"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ExpectedUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="AllocatedQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="AllocatedUom" sap:label="Unrestricted"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AllocatedUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unit of Measure" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="Ads" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Field of length 16" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DeliveryCycle" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MaxOrderQty" Type="Edm.String" Nullable="false" MaxLength="13" sap:label="Max Order Quantity" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PreviouslyEdited" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Vendor" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="VendorName" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Name 1" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="ArticleStatus" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="P-S artl status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="PromoCurrWeek" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="PromoNextWeek" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="PromoFollWeek" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Top1000" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Top500" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Top250" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="MerchCategory" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Merchandise Category" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="EanUpc" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="GTIN" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="SourceSupply" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Supply source" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/></EntityType>
+			<EntityType Name="ArticleStatus" sap:content-version="1">
+				<Key><PropertyRef Name="StatusCode"/></Key><Property Name="StatusCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="P-S artl status" sap:creatable="false"
+					sap:updatable="false"/><Property Name="StatusDescription" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/></EntityType>
+			<EntityType Name="SupplySource" sap:content-version="1">
+				<Key><PropertyRef Name="Code"/></Key><Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Supply source" sap:creatable="false" sap:updatable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/></EntityType>
+			<EntityType Name="VendorInfo" sap:content-version="1">
+				<Key><PropertyRef Name="VendorCode"/></Key><Property Name="VendorCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:creatable="false" sap:updatable="false"/><Property Name="VendorDescription" Type="Edm.String" Nullable="false" MaxLength="140" sap:label="Vendor Full Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/></EntityType>
+			<EntityType Name="AllocationType" sap:content-version="1">
+				<Key><PropertyRef Name="Type"/></Key><Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Alloc. tbl type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Desc" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ProductHierarchy" sap:content-version="1">
+				<Key><PropertyRef Name="CategId"/></Key><Property Name="CategId" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Category ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="CategDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Category Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ParentId" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Parent Category ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="ParentDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Parent Category Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Hierarchy" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Hierarchy Level" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Allocation" sap:content-version="1">
+				<Key><PropertyRef Name="OrderNumber"/></Key><Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Alloc. Table" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="StoreSet" Relationship="ZBFOM_RET_ALLOCATION_SRV.StoreAllocation" FromRole="FromRole_StoreAllocation"
+					ToRole="ToRole_StoreAllocation"/></EntityType>
+			<EntityType Name="Store" sap:content-version="1">
+				<Key><PropertyRef Name="OrderNumber"/><PropertyRef Name="OrderItem"/><PropertyRef Name="StoreCode"/></Key><Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Alloc. Table" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="OrderItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="StoreCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Site" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ModifyQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="ModifyUom" sap:label="Requested qty"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ModifyUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><NavigationProperty Name="Allocation" Relationship="ZBFOM_RET_ALLOCATION_SRV.StoreAllocation" FromRole="ToRole_StoreAllocation"
+					ToRole="FromRole_StoreAllocation"/></EntityType>
+			<Association Name="HeaderItem" sap:content-version="1"><End Type="ZBFOM_RET_ALLOCATION_SRV.AllocationHeader" Multiplicity="1" Role="FromRole_HeaderItem"/><End Type="ZBFOM_RET_ALLOCATION_SRV.AllocationItem" Multiplicity="*" Role="ToRole_HeaderItem"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_HeaderItem"><PropertyRef Name="OrderNumber"/><PropertyRef Name="StoreCode"/></Principal>
+					<Dependent Role="ToRole_HeaderItem"><PropertyRef Name="OrderNumber"/><PropertyRef Name="StoreCode"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="StoreAllocation" sap:content-version="1"><End Type="ZBFOM_RET_ALLOCATION_SRV.Allocation" Multiplicity="1" Role="FromRole_StoreAllocation"/><End Type="ZBFOM_RET_ALLOCATION_SRV.Store" Multiplicity="*" Role="ToRole_StoreAllocation"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_StoreAllocation"><PropertyRef Name="OrderNumber"/></Principal>
+					<Dependent Role="ToRole_StoreAllocation"><PropertyRef Name="OrderNumber"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZBFOM_RET_ALLOCATION_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="AllocationHeaderSet" EntityType="ZBFOM_RET_ALLOCATION_SRV.AllocationHeader" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="AllocationItemSet" EntityType="ZBFOM_RET_ALLOCATION_SRV.AllocationItem" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ArticleStatusSet" EntityType="ZBFOM_RET_ALLOCATION_SRV.ArticleStatus" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="SupplySourceSet" EntityType="ZBFOM_RET_ALLOCATION_SRV.SupplySource" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="VendorInfoSet" EntityType="ZBFOM_RET_ALLOCATION_SRV.VendorInfo" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="AllocationTypeSet" EntityType="ZBFOM_RET_ALLOCATION_SRV.AllocationType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ProductHierarchySet" EntityType="ZBFOM_RET_ALLOCATION_SRV.ProductHierarchy" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="AllocationSet" EntityType="ZBFOM_RET_ALLOCATION_SRV.Allocation" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="StoreSet" EntityType="ZBFOM_RET_ALLOCATION_SRV.Store" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="HeaderItemSet" Association="ZBFOM_RET_ALLOCATION_SRV.HeaderItem" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AllocationHeaderSet" Role="FromRole_HeaderItem"/><End EntitySet="AllocationItemSet" Role="ToRole_HeaderItem"/></AssociationSet>
+				<AssociationSet Name="StoreAllocationSet" Association="ZBFOM_RET_ALLOCATION_SRV.StoreAllocation" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AllocationSet" Role="FromRole_StoreAllocation"/><End EntitySet="StoreSet" Role="ToRole_StoreAllocation"/></AssociationSet>
+			</EntityContainer><atom:link rel="self"
+				href="https://webidecp-s0009692135trial.dispatcher.hanatrial.ondemand.com/destinations/F5D/sap/opu/odata/sap/ZBFOM_RET_ALLOCATION_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-s0009692135trial.dispatcher.hanatrial.ondemand.com/destinations/F5D/sap/opu/odata/sap/ZBFOM_RET_ALLOCATION_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
