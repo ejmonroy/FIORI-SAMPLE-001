@@ -1,69 +1,32 @@
-<mvc:View
-	controllerName="df.training.sample001.FIORI-SAMPLE-001.controller.Master"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core"
-	xmlns="sap.m"
-	xmlns:semantic="sap.m.semantic">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:semantic="sap.m.semantic" controllerName="df.training.sample001.FIORI-SAMPLE-001.controller.Master">
 
-	<semantic:MasterPage
-		id="page"
-		title="{masterView>/title}"
-		navButtonPress="onNavBack"
-		showNavButton="true">
+	<semantic:MasterPage id="page" title="{masterView>/title}" navButtonPress="onNavBack" showNavButton="true">
 		<semantic:subHeader>
 			<Bar id="headerBar">
 				<contentMiddle>
-					<SearchField
-						id="searchField"
-						showRefreshButton="{= !${device>/support/touch} }"
-						tooltip="{i18n>masterSearchTooltip}"
-						width="100%"
-						search="onSearch">
+					<SearchField id="searchField" showRefreshButton="{= !${device>/support/touch} }" tooltip="{i18n>masterSearchTooltip}" width="100%" search="onSearch">
 					</SearchField>
 				</contentMiddle>
 			</Bar>
 		</semantic:subHeader>
 
 		<semantic:content>
-			<PullToRefresh
-				id="pullToRefresh"
-				visible="{device>/support/touch}"
-				refresh="onRefresh" />
+			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
 			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
-			<List
-				id="list"
-				items="{
-					path: '/AllocationHeaderSet',
-					sorter: {
-						path: 'OrderDesc',
-						descending: false
-						},
-					groupHeaderFactory: '.createGroupHeader'
-				}"
-				busyIndicatorDelay="{masterView>/delay}"
-				noDataText="{masterView>/noDataText}"
-				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
-				growing="true"
-				growingScrollToLoad="true"
-				updateFinished="onUpdateFinished"
-				selectionChange="onSelectionChange">
+			<List id="list" items="{      path: '/AllocationHeaderSet',      sorter: {       path: 'OrderDesc',       descending: false       },      groupHeaderFactory: '.createGroupHeader'     }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
 				<infoToolbar>
-					<Toolbar
-						active="true"
-						id="filterBar"
-						visible="{masterView>/isFilterBarVisible}"
-						press="onOpenViewSettings">
-						<Title
-							id="filterBarLabel"
-							text="{masterView>/filterBarLabel}" />
+					<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+						<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
 					</Toolbar>
 				</infoToolbar>
 				<items>
-					<ObjectListItem
-						type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
-						press="onSelectionChange"
-						title="{OrderDesc}"
->
+					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{OrderDesc}" intro="{OrderNumber}" number="{ArticleCount}" numberUnit="{i18n>masterViewNumberUnit}">
+					<firstStatus>
+					    <ObjectStatus xmlns="sap.m" state="{=${Processed}? 'Success' : 'Error'}" id="status31" title="{i18n>masterViewStatus}" text="{=${Processed}? ${i18n>masterViewStatusProcessed} : ${i18n>masterViewStatusPending} }"/>
+					</firstStatus>
+					<attributes>
+					    <ObjectAttribute text="{TotalQty}" id="attribute4" title="{i18n>masterViewLabelTotalQty}"/>
+					</attributes>
 					</ObjectListItem>
 				</items>
 			</List>

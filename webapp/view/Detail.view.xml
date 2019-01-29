@@ -1,78 +1,43 @@
-<mvc:View
-	controllerName="df.training.sample001.FIORI-SAMPLE-001.controller.Detail"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.m.semantic"
-	xmlns:footerbar="sap.ushell.ui.footerbar">
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="df.training.sample001.FIORI-SAMPLE-001.controller.Detail">
 
-	<semantic:DetailPage
-		id="page"
-		navButtonPress="onNavBack"
-		showNavButton="{device>/system/phone}"
-		title="{i18n>detailTitle}"
-		busy="{detailView>/busy}"
-		busyIndicatorDelay="{detailView>/delay}">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 
 		<semantic:content>
-			<ObjectHeader
-				id="objectHeader"
-				title="{OrderDesc}"
->
+			<ObjectHeader id="objectHeader" title="{OrderDesc}" intro="{OrderNumber}" number="{ArticleCount}" numberUnit="{i18n>masterViewNumberUnit}">
+			<statuses>
+			    <ObjectStatus xmlns="sap.m" text="{=${Processed}? ${i18n>masterViewStatusProcessed} : ${i18n>masterViewStatusPending} }" state="{=${Processed}? 'Success' : 'Error' }" id="status6" title="{i18n>masterViewStatus}"/>
+			</statuses>
+			<attributes>
+			    <ObjectAttribute text="{TotalQty}" id="attribute18" title="{i18n>masterViewLabelTotalQty}"/>
+			</attributes>
 			</ObjectHeader>
-			<IconTabBar
-				id="iconTabBar"
-				class="sapUiResponsiveContentPadding">
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter
-						id="iconTabBarFilter1"
-						icon="sap-icon://hint"
-						tooltip="{i18n>detailIconTabBarInfo}">
+					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
 					</IconTabFilter>
-					<IconTabFilter
-						id="iconTabBarFilter2"
-						icon="sap-icon://attachment"
-						tooltip="{i18n>detailIconTabBarAttachments}">
+					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}">
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
-			<Table
-				id="lineItemsList"
-				width="auto"
-				items="{HeaderToItem}"
-				updateFinished="onListUpdateFinished"
-				noDataText="{i18n>detailLineItemTableNoDataText}"
-				busyIndicatorDelay="{detailView>/lineItemTableDelay}"
-				class="sapUiResponsiveMargin">
+			<Table id="lineItemsList" width="auto" items="{HeaderToItem}" updateFinished="onListUpdateFinished" noDataText="{i18n>detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin">
 				<headerToolbar>
 					<Toolbar id="lineItemsToolbar">
-						<Title
-							id="lineItemsHeader"
-							text="{detailView>/lineItemListTitle}"/>
+						<Title id="lineItemsHeader" text="{detailView>/lineItemListTitle}"/>
 					</Toolbar>
 				</headerToolbar>
 				<columns>
 					<Column>
-						<Text text="{i18n>detailLineItemTableIDColumn}"/>
+						<Text text="{/#AllocationItem/ArticleNumber/@sap:label}"/>
 					</Column>
-					<Column
-						minScreenWidth="Tablet"
-						demandPopin="true"
-						hAlign="End">
-						<Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{/#AllocationItem/AllocatedQty/@sap:label}"/>
 					</Column>
 				</columns>
 				<items>
 					<ColumnListItem>
 						<cells>
-							<ObjectIdentifier
-								title="{ArticleNumber}"
-								text="{OrderItem}"/>
-							<ObjectNumber
-								number="{
-									path: 'AllocatedQty',
-									formatter: '.formatter.currencyValue'
-								}"
-								unit="{AllocatedUom}"/>
+							<ObjectIdentifier title="{ArticleNumber}" text="{ArticleText}"/>
+							<ObjectNumber number="{          path: 'AllocatedQty',          formatter: '.formatter.currencyValue'         }" unit="{AllocatedUom}"/>
 						</cells>
 					</ColumnListItem>
 				</items>
@@ -80,22 +45,15 @@
 		</semantic:content>
 
 		<semantic:sendEmailAction>
-			<semantic:SendEmailAction
-				id="shareEmail"
-				press="onShareEmailPress"/>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>
 
 		<semantic:shareInJamAction>
-			<semantic:ShareInJamAction
-				id="shareInJam"
-				visible="{FLP>/isShareInJamActive}"
-				press="onShareInJamPress"/>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
 		</semantic:shareInJamAction>
 
 		<semantic:saveAsTileAction>
-			<footerbar:AddBookmarkButton
-				id="shareTile"
-				title="{detailView>/saveAsTileTitle}"/>
+			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
 		</semantic:saveAsTileAction>
 
 	</semantic:DetailPage>
