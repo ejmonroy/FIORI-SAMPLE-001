@@ -102,6 +102,8 @@ sap.ui.define([
 			 */
 			_onObjectMatched : function (oEvent) {
 				var sObjectId =  oEvent.getParameter("arguments").objectId;
+				var oObjectId = JSON.parse(sObjectId);
+				sObjectId = this.getModel().createKey("AllocationHeaderSet",oObjectId);
 				this.getModel().metadataLoaded().then( function() {
 					this._bindView("/" + sObjectId);
 				}.bind(this));

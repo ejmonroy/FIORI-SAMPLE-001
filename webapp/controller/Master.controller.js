@@ -197,7 +197,13 @@ sap.ui.define([
 					if (mParams.list.getMode() === "None") {
 						return;
 					}
-					var sObjectId = mParams.firstListitem.getBindingContext().getProperty("OrderNumber");
+					var oContext = mParams.firstListitem.getBindingContext();
+					var sStoreCode = oContext.getProperty("StoreCode");
+					var sOrderNumber = oContext.getProperty("OrderNumber");
+					var sObjectId = JSON.stringify({
+						"StoreCode": sStoreCode,
+						"OrderNumber": sOrderNumber
+					});
 					this.getRouter().navTo("object", {
 						objectId: sObjectId
 					}, true);
@@ -221,9 +227,9 @@ sap.ui.define([
 			var bReplace = !Device.system.phone;
 			var sStoreCode = oItem.getBindingContext().getProperty("StoreCode");
 			var sOrderNumber = oItem.getBindingContext().getProperty("OrderNumber");
-			var sObjectId = this.getModel().createKey("AllocationHeaderSet", {
-				StoreCode: sStoreCode,
-				OrderNumber: sOrderNumber
+			var sObjectId = JSON.stringify({
+				"StoreCode": sStoreCode,
+				"OrderNumber": sOrderNumber
 			});
 			this.getRouter().navTo("object", {
 				objectId: sObjectId
